@@ -87,14 +87,14 @@ int main( int argc, char** argv )
 
     bFunc b_func = [&](const coordinate_t& X, double_t w1, double_t w2 ) -> coordinate_t
     {
-        return coordinate_t( X.t, 0.1 * w1 + 0. * w2, 0. * w1 + 0.1 * w2 );
+        return coordinate_t( X.t, 0. w1 + 0.4 * w2, 0.4 * w1 + 0. * w2 );
     };
 
     std::vector<trajectory_t> trajectories;
     coordinate_t X0( 0, 1, 1 );
     for( size_t i = 0; i < NUM_OF_TRAJECTORIES; ++i )
     {
-        std::fstream fStream( "res_" + std::to_string( i ) + ".csv", std::ios::out );
+        std::fstream fStream( "res1_" + std::to_string( i ) + ".csv", std::ios::out );
         trajectory_t tr = getTrajectory(
                     0,
                     2,
@@ -121,7 +121,7 @@ int main( int argc, char** argv )
         }
     }
 
-    std::fstream meanStr( "mean.csv", std::ios::out );
+    std::fstream meanStr( "mean1.csv", std::ios::out );
 
     writeTrajextoryToStream( mean, meanStr );
 
